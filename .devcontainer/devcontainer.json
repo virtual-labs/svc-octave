@@ -1,7 +1,7 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {
-  },
+  "features": {},
   "postCreateCommand": "docker build -t octave_image src/",
-  "postStartCommand": "docker run octave_image -p 4647:4647"
+  "postStartCommand": "docker run -d -p 4647:4647 --name octave_container octave_image",
+  "forwardPorts": [4647]
 }
