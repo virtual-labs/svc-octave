@@ -1,5 +1,7 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-  }
+  },
+  "postCreateCommand": "docker build -t octave_image src/",
+  "postStartCommand": "docker run octave_image -p 4647:4647"
 }
