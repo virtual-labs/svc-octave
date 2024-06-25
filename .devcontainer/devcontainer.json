@@ -3,5 +3,12 @@
   "features": {},
   "postCreateCommand": "docker build -t octave_image src/",
   "postStartCommand": "docker run -d -p 4647:4647 --name octave_container octave_image",
-  "forwardPorts": [4647]
+  "forwardPorts": [4647],
+  "portsAttributes": {
+    "4647": {
+      "label": "Octave Port",
+      "visibility": "public",
+      "onAutoForward": "notify"
+    }
+  }
 }
