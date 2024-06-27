@@ -1,14 +1,8 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {},
-  "postCreateCommand": "docker build -t octave_image src/",
-  "postStartCommand": "docker run -d -p 4647:4647 --name octave_container octave_image",
-  "forwardPorts": [4647],
-  "portsAttributes": {
-    "4647": {
-      "label": "Octave Port",
-      "visibility": "public",
-      "onAutoForward": "notify"
-    }
-  }
+  "build": { "dockerfile": "../src/Dockerfile" },
+  "postStartCommand": "cd /; python3 /server.py --port $PORT",
+  "remoteEnv": {
+    "PORT": "80"
+  },
+  "forwardPorts": [80]
 }
