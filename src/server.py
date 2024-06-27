@@ -1,6 +1,6 @@
 import uuid
-
-from flask import Flask, request, abort
+import argparse
+from flask import Flask, request, abort, jsonify
 from flask_cors import CORS
 
 import exp_optimization
@@ -139,4 +139,7 @@ def exp_part(num, part):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=4647, debug=True)
+    parser = argparse.ArgumentParser(description="Run the Flask app.")
+    parser.add_argument("--port", type=int, default=4647, help="Port to run the Flask app on.")
+    args = parser.parse_args()
+    app.run(host="0.0.0.0", port=args.port, debug=True)
